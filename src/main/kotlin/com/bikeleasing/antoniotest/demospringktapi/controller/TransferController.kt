@@ -6,22 +6,23 @@ Date: 04.03.23
 
 package com.bikeleasing.antoniotest.demospringktapi.controller
 
-import org.springframework.web.bind.annotation.GetMapping
-import org.springframework.web.bind.annotation.PostMapping
-import org.springframework.web.bind.annotation.RequestMapping
-import org.springframework.web.bind.annotation.RestController
+import com.bikeleasing.antoniotest.demospringktapi.model.OverviewTransactionModel
+import com.bikeleasing.antoniotest.demospringktapi.model.TransactionModel
+import org.springframework.web.bind.annotation.*
 
 @RestController
 @RequestMapping("/api/v1/transfer")
 class TransferController {
 
     @PostMapping("/create")
-    fun createTransfer() {
+    fun createTransfer(@RequestBody transfer: TransactionModel) {
         println( "Transfer created" )
+        TODO("Not yet implemented")
     }
 
     @GetMapping("/list")
-    fun listTransfers() {
+    fun listTransfers(): List<OverviewTransactionModel> {
         println( "Transfers listed" )
+        return listOf()
     }
 }
