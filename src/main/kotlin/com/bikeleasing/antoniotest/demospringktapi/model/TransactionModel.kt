@@ -9,14 +9,14 @@ package com.bikeleasing.antoniotest.demospringktapi.model
 import java.util.*
 
 data class TransactionModel(
-    val id : String,
     val targetAccount: String,
     val amount: Double,
     val currency: String,
     val sender: String,
     val description: String,
-    val date: Date
-    )
+    ) {
+    var date: Date = Date()
+}
 
 fun TransactionModel.convertToDBModel() = TransactionDBModel(
         accountIdentifier = this.targetAccount,

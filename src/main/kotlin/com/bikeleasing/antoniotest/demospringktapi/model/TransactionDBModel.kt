@@ -16,8 +16,8 @@ class TransactionDBModel(
     val currency: String,
     val description: String,
 ) {
-    @GeneratedValue(strategy = GenerationType.AUTO)
     @Id
+    @GeneratedValue()
     var id: UUID? = null
         private set
 
