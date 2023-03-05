@@ -7,6 +7,7 @@ package com.bikeleasing.antoniotest.demospringktapi.model
 
 
 import jakarta.persistence.*
+import java.time.LocalDate
 import java.util.*
 
 @Entity
@@ -21,5 +22,6 @@ class TransactionDBModel(
     var id: UUID? = null
         private set
 
-    var date: Date = Date()
+    var date: LocalDate = LocalDate.now()
+        private set
 }

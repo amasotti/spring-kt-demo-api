@@ -11,16 +11,25 @@ import com.bikeleasing.antoniotest.demospringktapi.model.TransactionModel
 import com.bikeleasing.antoniotest.demospringktapi.model.convertToDBModel
 import com.bikeleasing.antoniotest.demospringktapi.repository.TransferRepository
 import com.bikeleasing.antoniotest.demospringktapi.service.TransferService
+import com.bikeleasing.antoniotest.demospringktapi.utils.BaseReponse
 import org.springframework.web.bind.annotation.*
 
 @RestController
 @RequestMapping("/api/v1/transfer")
 class TransferController(private val repository: TransferRepository) {
 
+    val service = TransferService(repository)
+
     @PostMapping("/create")
-    fun createTransfer(@RequestBody transfer: TransactionModel) {
+    fun createTransfer(@RequestBody transfer: TransactionModel): BaseReponse<Any> {
         println( "Transfer created" )
-        repository.save(transfer.convertToDBModel())
+        try {
+            val payload = transfer.convertToDBModel()
+            repository.save(payload)
+            return BaseReponse.CreateTransferResponse("Transfer created", payload)
+        } catch (e: Exception) {
+            error(e.message ?: "Error while creating transfer")
+        }
     }
 
     @GetMapping("/list")

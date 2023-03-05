@@ -6,6 +6,7 @@ Date: 04.03.23
 
 package com.bikeleasing.antoniotest.demospringktapi.model
 
+import java.time.LocalDate
 import java.util.*
 data class OverviewTransactionModel(
     val id : String,
@@ -13,7 +14,7 @@ data class OverviewTransactionModel(
     val amount: String,
     val description: String,
     val sender: String,
-    val date: Date
+    val date: LocalDate
 )
 
 fun TransactionDBModel.convertToOverviewTransactionModel() = OverviewTransactionModel(
